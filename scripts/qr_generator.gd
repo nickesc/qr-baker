@@ -45,55 +45,68 @@ func _on_generate_pressed() -> void:
     qr.set_quiet_zone_size(qr_object.quiet_zone_size)
     qr_generated.emit(data.text)
 
-func _on_save_pressed() -> void:
+func _on_image_path_selected(filename: String, directory: String):
     var img: Image = qr.generate_qr_image()
-    save_png_to_downloads(img, "qr_text_save.png")
+    #print(filename+"\n"+directory)
+    save_png_to_downloads(img, filename, directory)
     
-func save_png_to_downloads(file: Image,filename: String):
+func _on_android_save(share: ShareAndroid):
+    data.text = "share android"
+
+func _on_mobile_save(share):
+    var img: Image = qr.generate_qr_image()
+    img.save_png("user://qr-code.png")
+    share.share_image(OS.get_user_data_dir()+"/qr-code.png", "QR Code", "QR Code", "QR Code")
+
+func _on_web_save():
+    data.text = "download"
+    
+func save_png_to_downloads(file: Image, filename: String, directory: String):
     file.save_png("user://"+filename)
     
     match OS.get_name():
         "Windows":
-            save_to_windows(file, filename, true, false)
+            save_to_windows(filename, directory, true, true)
         "macOS":
-            save_to_unix(file, filename, true, false)
+            save_to_unix(filename, directory, true, false)
         "Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
-            save_to_unix(file, filename, true, false)
+            save_to_unix(filename, directory, true, true)
         "Android":
-            save_to_unix(file, filename, true, true)
+            save_to_unix(filename, directory, true, true)
         "iOS":
-            save_to_ios(file, filename, true, true)
+            save_to_ios(file, filename, directory, true, true)
         "Web":
-            save_to_web(file, filename, true, true)
+            save_to_web(file, filename, directory, true, true)
     
     var command = "cp"
 
-func execute_copy(command: String, target_path: String, destination_path: String, debug: bool = true, dry: bool = false) -> int:
+func execute_copy(command: String, source_file: String, target_dir: String, debug: bool = true, dry: bool = false) -> int:
     var exit_code: int
     var output = []
     
     if not dry:
-        exit_code = OS.execute(command, [target_path, destination_path], output, true)
+        exit_code = OS.execute(command, [source_file, target_dir], output, true)
     else:
         if debug:
-            print(command+" \""+target_path+"\" \""+destination_path+"\"")
+            print(command+" \""+source_file+"\" \""+target_dir+"\"")
         exit_code = -1
     
     if debug:
-        print(target_path, " ", destination_path)
+        print(source_file, " ", target_dir)
         if not dry:
             print(exit_code, "\n", output)
     
     return exit_code
 
-func save_to_web(file, filename, debug: bool=false, dry: bool=false) -> int:
+func save_to_web(file: Image, filename: String, target_dir: String, debug: bool=false, dry: bool=false) -> int:
     return -1
 
-func save_to_ios(file, filename, debug: bool=false, dry: bool=false) -> int:
+func save_to_ios(file: Image, filename: String, target_dir: String, debug: bool=false, dry: bool=false) -> int:
     return -1
 
-func save_to_windows(file, filename, debug: bool=false, dry: bool=false) -> int:
+func save_to_windows(filename, directory, debug: bool=false, dry: bool=false) -> int:
     var home_path = (OS.get_environment("USERPROFILE")).replace("/","\\")
+    var user_data_path: String = (OS.get_user_data_dir()+"/"+filename).replace("/","\\")
     var target_path = (OS.get_user_data_dir()+"/"+filename).replace("/","\\")
     var destination_path = (home_path+"/Downloads/").replace("/","\\")
     
@@ -101,14 +114,13 @@ func save_to_windows(file, filename, debug: bool=false, dry: bool=false) -> int:
     var dest = "/C"
     var command = "copy"
     
-    return execute_copy(cmd, dest, command+" \""+target_path+"\" \""+destination_path+"\"", debug, dry)
+    return execute_copy(cmd, dest, command+" \""+user_data_path+"\" \""+destination_path+"\"", debug, dry)
 
-func save_to_unix(file, filename, debug: bool=false, dry: bool=false) -> int:
-    var home_path = OS.get_environment("HOME")
-    var target_path = OS.get_user_data_dir()+"/"+filename
-    var destination_path = home_path+"/Downloads/"
+func save_to_unix(filename: String, target_dir: String, debug: bool=false, dry: bool=false) -> int:
+    var home_path: String = OS.get_environment("HOME")
+    var user_data_path: String = OS.get_user_data_dir()+"/"+filename
     
-    var command = "cp"
+    var command: String = "cp"
     
-    return execute_copy(command, target_path, destination_path, debug, dry)
+    return execute_copy(command, user_data_path, target_dir, debug, dry)
     
