@@ -1,0 +1,1 @@
+{"background_color":"#000000","display":"fullscreen","icons":[{"sizes":"144x144","src":"qr-baker.144x144.png","type":"image/png"},{"sizes":"180x180","src":"qr-baker.180x180.png","type":"image/png"},{"sizes":"512x512","src":"qr-baker.512x512.png","type":"image/png"}],"name":"QR Baker","orientation":"any","start_url":"./qr-baker.html"}
