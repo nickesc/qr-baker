@@ -41,7 +41,7 @@ enum ExitCodes {
 
 @export_category("Export Options")
 @export var DEFAULT_MOBILE_FILENAME: String = "qr-code.png"
-
+@export var DEFAULT_WEB_FILENAME: String = "qr-code.png"
 
 # Built-in
 
@@ -139,10 +139,12 @@ func _on_ios_share(share: Share) -> void:
     var subject: String = qr.data.left(20)
     var content: String = "QR Code"
     
-    share.share_image(OS.get_user_data_dir()+"/qr-code.png", title, subject, content)
+    share.share_image(OS.get_user_data_dir()+"/"+DEFAULT_MOBILE_FILENAME, title, subject, content)
 
 func _on_web_download() -> void:
-    data_field.set_text("download")
+    var img: Image = qr.generate_qr_image()
+    var buffer: PackedByteArray = img.save_png_to_buffer()
+    JavaScriptBridge.download_buffer(buffer,DEFAULT_WEB_FILENAME, "image/png")
     
 func save_qr_to_directory(filename: String, directory: String) -> void:
     var img: Image = qr.generate_qr_image()
