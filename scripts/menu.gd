@@ -1,17 +1,17 @@
 extends HBoxContainer
 
-var click_pos = Vector2.ZERO
-var moving = false
+var click_pos: Vector2 = Vector2.ZERO
+var moving: bool = false
 
 func _ready() -> void:
     match OS.get_name():
-        "Windows", "macOS", "Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
-            pass
         "Android", "iOS", "Web":
-            visible = false
+            set_visible(false)
+        _:
+            set_visible(true)
 
 func moveWindow():
-    var new_pos = get_global_mouse_position() - click_pos
+    var new_pos: Vector2 = get_global_mouse_position() - click_pos
     DisplayServer.window_set_position(DisplayServer.window_get_position() + Vector2i(new_pos))
 
 func _process(_delta):

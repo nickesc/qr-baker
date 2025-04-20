@@ -1,40 +1,44 @@
 extends Button
 
-signal ios_save(share: Share)
-signal android_save(share: ShareAndroid)
-signal web_save
+signal ios_share(share: Share)
+signal android_save
+signal web_download
+signal desktop_save
 
-@onready var save_dialogue = $SaveDialog
+@onready var save_dialog: FileDialog = $SaveDialog
 
-var share_android: ShareAndroid
 var share_ios: Share
 
-const mobile_button_height = 150
-const mobile_button_text = "Export Image"
+const mobile_button_height: int = 150
+
+const desktop_button_text: String = "Save Image"
+const ios_button_text: String = "Export Image"
+const android_button_text: String = "Save Image"
+const web_button_text: String = "Download Image"
 
 func _ready() -> void:
     match OS.get_name():
         "Android":
-            share_android = ShareAndroid.new()
-            add_child(share_android)
-            text = mobile_button_text
+            OS.request_permissions()
+            set_text(android_button_text)
             custom_minimum_size.y = mobile_button_height
         "iOS":
             share_ios = Share.new()
-            share_ios.set_name("ShareiOS")
             add_child(share_ios)
-            text = mobile_button_text
+            set_text(ios_button_text)
             custom_minimum_size.y = mobile_button_height
         "Web":
-            text = "Download Image"
+            set_text(web_button_text)
+        _:
+            set_text(desktop_button_text)
             
 func _on_pressed() -> void:    
     match OS.get_name():
-        "Windows", "macOS", "Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
-            save_dialogue.visible = true
         "Android":
-            android_save.emit(share_android)
+            android_save.emit()
         "iOS":
-            ios_save.emit(share_ios)
+            ios_share.emit(share_ios)
         "Web":
-            web_save.emit()
+            web_download.emit()
+        _:
+            desktop_save.emit()
