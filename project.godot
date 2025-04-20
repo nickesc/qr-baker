@@ -35,7 +35,7 @@ window/ios/suppress_ui_gesture=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SharePlugin/plugin.cfg", "res://addons/SharePluginAndroid/plugin.cfg", "res://addons/qr_code/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/qr_code/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [input]
 
