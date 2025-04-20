@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cn4dqflh3sbji" path="res://scripts/save_to_device.gd" id="8_eb6dy"]
 [ext_resource type="Script" uid="uid://ch1o605jwyrnb" path="res://scripts/resize.gd" id="8_tipki"]
 [ext_resource type="Script" uid="uid://cp6qxr0s0v5bo" path="res://scenes/file_dialog.gd" id="9_85g3d"]
+[ext_resource type="Texture2D" uid="uid://cj0sjp034gv78" path="res://imgs/refresh.svg" id="10_trceg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
 content_margin_left = 5.0
@@ -392,6 +393,19 @@ auto_module_px_size = false
 module_px_size = 10
 quiet_zone_size = 4
 metadata/_custom_type_script = "uid://dynulhnyq5hpq"
+
+[node name="Reset" type="Button" parent="QR Panel/QR Generator/QRContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("1_o5qli")
+theme_override_styles/hover = SubResource("StyleBoxFlat_trceg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eb6dy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_trceg")
+icon = ExtResource("10_trceg")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Line4" type="HSeparator" parent="QR Panel/QR Generator"]
 layout_mode = 2
