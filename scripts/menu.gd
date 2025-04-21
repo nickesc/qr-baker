@@ -16,6 +16,7 @@ func _ready() -> void:
         "Web":
             close.set_visible(false)
             header.set_visible(false)
+            minimize.set_visible(false)
             web_header.set_visible(true)
         "macOS":
             minimize.set_visible(false)
