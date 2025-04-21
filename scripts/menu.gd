@@ -5,6 +5,7 @@ var moving: bool = false
 
 @onready var close: Button = $Close
 @onready var minimize: Button = $Minimize
+@onready var separator: Control = $Separator
 @onready var header: Button = $Header
 @onready var web_header: Button = $WebHeader
 
@@ -15,8 +16,9 @@ func _ready() -> void:
             set_visible(false)
         "Web":
             close.set_visible(false)
-            header.set_visible(false)
             minimize.set_visible(false)
+            separator.set_visible(false)
+            header.set_visible(false)
             web_header.set_visible(true)
         "macOS":
             minimize.set_visible(false)
