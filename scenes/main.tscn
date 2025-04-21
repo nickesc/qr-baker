@@ -70,17 +70,14 @@ theme = ExtResource("1_o5qli")
 theme_override_styles/panel = ExtResource("2_eb6dy")
 script = ExtResource("2_ya4ey")
 
-[node name="QR Generator" type="VBoxContainer" parent="QR Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="QR Panel"]
 layout_mode = 2
-size_flags_vertical = 3
-script = ExtResource("1_0wfyh")
-DEFAULT_LIGHT_MODULE_COLOR = Color(1, 1, 1, 1)
 
-[node name="Menu" type="HBoxContainer" parent="QR Panel/QR Generator"]
+[node name="Menu" type="HBoxContainer" parent="QR Panel/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("2_jyhfs")
 
-[node name="Close" type="Button" parent="QR Panel/QR Generator/Menu"]
+[node name="Close" type="Button" parent="QR Panel/VBoxContainer/Menu"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -92,7 +89,7 @@ theme_override_styles/normal = ExtResource("6_gqmmt")
 icon = ExtResource("4_tefeu")
 icon_alignment = 1
 
-[node name="Minimize" type="Button" parent="QR Panel/QR Generator/Menu"]
+[node name="Minimize" type="Button" parent="QR Panel/VBoxContainer/Menu"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -103,11 +100,11 @@ theme_override_styles/normal = ExtResource("9_2f3dj")
 icon = ExtResource("11_fv21b")
 icon_alignment = 1
 
-[node name="Separator" type="Control" parent="QR Panel/QR Generator/Menu"]
+[node name="Separator" type="Control" parent="QR Panel/VBoxContainer/Menu"]
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 2
 
-[node name="Header" type="Button" parent="QR Panel/QR Generator/Menu"]
+[node name="Header" type="Button" parent="QR Panel/VBoxContainer/Menu"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -122,7 +119,7 @@ text = "QR Baker"
 icon = ExtResource("5_o6xl0")
 icon_alignment = 2
 
-[node name="WebHeader" type="Button" parent="QR Panel/QR Generator/Menu"]
+[node name="WebHeader" type="Button" parent="QR Panel/VBoxContainer/Menu"]
 visible = false
 custom_minimum_size = Vector2(40, 120)
 layout_mode = 2
@@ -136,26 +133,38 @@ theme_override_styles/normal = ExtResource("16_yq6so")
 text = "QR Baker"
 icon_alignment = 2
 
-[node name="Line3" type="HSeparator" parent="QR Panel/QR Generator"]
+[node name="MarginContainer" type="MarginContainer" parent="QR Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="QR Generator" type="VBoxContainer" parent="QR Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("1_0wfyh")
+DEFAULT_LIGHT_MODULE_COLOR = Color(1, 1, 1, 1)
+
+[node name="Line3" type="HSeparator" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator"]
 layout_mode = 2
 theme = ExtResource("1_o5qli")
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jyhfs")
 
-[node name="Properties" type="VBoxContainer" parent="QR Panel/QR Generator"]
+[node name="Properties" type="VBoxContainer" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator"]
 layout_mode = 2
 
-[node name="ErrorCorrectionLabel" type="Label" parent="QR Panel/QR Generator/Properties"]
+[node name="ErrorCorrectionLabel" type="Label" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_tbgi4")
 text = "Encoded data"
 
-[node name="DataContainer" type="PanelContainer" parent="QR Panel/QR Generator/Properties"]
+[node name="DataContainer" type="PanelContainer" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("13_yc10j")
 
-[node name="Data" type="TextEdit" parent="QR Panel/QR Generator/Properties/DataContainer"]
+[node name="Data" type="TextEdit" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/DataContainer"]
 custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 size_flags_vertical = 0
@@ -164,25 +173,25 @@ placeholder_text = "Data"
 wrap_mode = 1
 autowrap_mode = 1
 
-[node name="Line" type="HSeparator" parent="QR Panel/QR Generator/Properties"]
+[node name="Line" type="HSeparator" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties"]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_tefeu")
 
-[node name="Options" type="GridContainer" parent="QR Panel/QR Generator/Properties"]
+[node name="Options" type="GridContainer" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties"]
 layout_mode = 2
 columns = 3
 
-[node name="ErrorCorrectionLabel" type="Label" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="ErrorCorrectionLabel" type="Label" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_tbgi4")
 text = "Error Correction"
 
-[node name="Separator" type="Label" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="Separator" type="Label" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 layout_mode = 2
 text = "   "
 
-[node name="ErrorCorrection" type="OptionButton" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="ErrorCorrection" type="OptionButton" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -199,15 +208,15 @@ popup/item_2/id = 3
 popup/item_3/text = "High"
 popup/item_3/id = 2
 
-[node name="LightModulesLabel" type="Label" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="LightModulesLabel" type="Label" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_tbgi4")
 text = "Background Color"
 
-[node name="Separator2" type="Control" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="Separator2" type="Control" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 layout_mode = 2
 
-[node name="LightModuleColor" type="ColorPickerButton" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="LightModuleColor" type="ColorPickerButton" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -215,35 +224,35 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("1_o5qli")
 color = Color(1, 1, 1, 1)
 
-[node name="DarkModulesLabel" type="Label" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="DarkModulesLabel" type="Label" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_tbgi4")
 text = "Foreground Color"
 
-[node name="Separator3" type="Control" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="Separator3" type="Control" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 layout_mode = 2
 
-[node name="DarkModuleColor" type="ColorPickerButton" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="DarkModuleColor" type="ColorPickerButton" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_o5qli")
 
-[node name="ModulePxSizeLabel" type="Label" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="ModulePxSizeLabel" type="Label" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_tbgi4")
 text = "Square Size"
 
-[node name="AutoModulePxSize" type="CheckBox" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="AutoModulePxSize" type="CheckBox" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 visible = false
 layout_mode = 2
 theme = ExtResource("1_o5qli")
 
-[node name="Separator4" type="Control" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="Separator4" type="Control" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 layout_mode = 2
 
-[node name="ModulePxSize" type="SpinBox" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="ModulePxSize" type="SpinBox" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -254,15 +263,15 @@ allow_greater = true
 alignment = 1
 suffix = "px"
 
-[node name="QuietZoneSizeLabel" type="Label" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="QuietZoneSizeLabel" type="Label" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_tbgi4")
 text = "Border Size"
 
-[node name="Separator5" type="Control" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="Separator5" type="Control" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 layout_mode = 2
 
-[node name="QuietZoneSize" type="SpinBox" parent="QR Panel/QR Generator/Properties/Options"]
+[node name="QuietZoneSize" type="SpinBox" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -273,15 +282,15 @@ allow_greater = true
 alignment = 1
 suffix = "sqrs"
 
-[node name="Line2" type="HSeparator" parent="QR Panel/QR Generator/Properties"]
+[node name="Line2" type="HSeparator" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties"]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_o6xl0")
 
-[node name="Submit" type="VBoxContainer" parent="QR Panel/QR Generator"]
+[node name="Submit" type="VBoxContainer" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator"]
 layout_mode = 2
 
-[node name="Generate" type="Button" parent="QR Panel/QR Generator/Submit"]
+[node name="Generate" type="Button" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Submit"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -292,7 +301,7 @@ theme_override_styles/pressed = ExtResource("21_2wyq8")
 theme_override_styles/normal = ExtResource("20_og1vs")
 text = "Generate QR Code"
 
-[node name="Save" type="Button" parent="QR Panel/QR Generator/Submit"]
+[node name="Save" type="Button" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Submit"]
 visible = false
 layout_mode = 2
 theme = ExtResource("1_o5qli")
@@ -301,20 +310,20 @@ theme_override_styles/pressed = ExtResource("14_og1vs")
 theme_override_styles/normal = ExtResource("13_y6deb")
 text = "Save QR Code"
 
-[node name="Line2" type="HSeparator" parent="QR Panel/QR Generator/Submit"]
+[node name="Line2" type="HSeparator" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/Submit"]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_o6xl0")
 
-[node name="QRContainer" type="PanelContainer" parent="QR Panel/QR Generator"]
+[node name="QRContainer" type="PanelContainer" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("15_2wyq8")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="QR Panel/QR Generator/QRContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/QRContainer"]
 layout_mode = 2
 
-[node name="QR" type="TextureRect" parent="QR Panel/QR Generator/QRContainer/AspectRatioContainer"]
+[node name="QR" type="TextureRect" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/QRContainer/AspectRatioContainer"]
 layout_mode = 2
 texture = SubResource("ImageTexture_tel4y")
 expand_mode = 1
@@ -333,7 +342,7 @@ module_px_size = 10
 quiet_zone_size = 4
 metadata/_custom_type_script = "uid://dynulhnyq5hpq"
 
-[node name="Reset" type="Button" parent="QR Panel/QR Generator/QRContainer"]
+[node name="Reset" type="Button" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/QRContainer"]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -347,12 +356,12 @@ icon = ExtResource("10_trceg")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Line4" type="HSeparator" parent="QR Panel/QR Generator"]
+[node name="Line4" type="HSeparator" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator"]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_o6xl0")
 
-[node name="SaveToDevice" type="Button" parent="QR Panel/QR Generator"]
+[node name="SaveToDevice" type="Button" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -364,7 +373,7 @@ theme_override_styles/normal = ExtResource("13_y6deb")
 text = "Save to Device"
 script = ExtResource("8_eb6dy")
 
-[node name="SaveDialog" type="FileDialog" parent="QR Panel/QR Generator/SaveToDevice"]
+[node name="SaveDialog" type="FileDialog" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice"]
 title = "Save QR Code"
 initial_position = 5
 size = Vector2i(1055, 360)
@@ -425,22 +434,22 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_default_cursor_shape = 12
 
-[connection signal="pressed" from="QR Panel/QR Generator/Menu/Close" to="QR Panel/QR Generator/Menu" method="_on_close_pressed"]
-[connection signal="pressed" from="QR Panel/QR Generator/Menu/Minimize" to="QR Panel/QR Generator/Menu" method="_on_minimize_pressed"]
-[connection signal="button_down" from="QR Panel/QR Generator/Menu/Header" to="QR Panel/QR Generator/Menu" method="_on_move_down"]
-[connection signal="button_up" from="QR Panel/QR Generator/Menu/Header" to="QR Panel/QR Generator/Menu" method="_on_move_up"]
-[connection signal="toggled" from="QR Panel/QR Generator/Properties/Options/AutoModulePxSize" to="QR Panel/QR Generator" method="_on_auto_module_px_size_toggled"]
-[connection signal="pressed" from="QR Panel/QR Generator/Submit/Generate" to="QR Panel/QR Generator" method="_on_generate_pressed"]
-[connection signal="pressed" from="QR Panel/QR Generator/QRContainer/Reset" to="QR Panel/QR Generator" method="_on_reset_pressed"]
-[connection signal="android_save" from="QR Panel/QR Generator/SaveToDevice" to="QR Panel/QR Generator/SaveToDevice/SaveDialog" method="_on_save_pressed"]
-[connection signal="desktop_save" from="QR Panel/QR Generator/SaveToDevice" to="QR Panel/QR Generator/SaveToDevice/SaveDialog" method="_on_save_pressed"]
-[connection signal="ios_share" from="QR Panel/QR Generator/SaveToDevice" to="QR Panel/QR Generator" method="_on_ios_share"]
-[connection signal="pressed" from="QR Panel/QR Generator/SaveToDevice" to="QR Panel/QR Generator/SaveToDevice" method="_on_pressed"]
-[connection signal="web_download" from="QR Panel/QR Generator/SaveToDevice" to="QR Panel/QR Generator" method="_on_web_download"]
-[connection signal="canceled" from="QR Panel/QR Generator/SaveToDevice/SaveDialog" to="QR Panel/QR Generator/SaveToDevice/SaveDialog" method="_on_close_dialog"]
-[connection signal="confirmed" from="QR Panel/QR Generator/SaveToDevice/SaveDialog" to="QR Panel/QR Generator/SaveToDevice/SaveDialog" method="_on_close_dialog"]
-[connection signal="file_selected" from="QR Panel/QR Generator/SaveToDevice/SaveDialog" to="QR Panel/QR Generator/SaveToDevice/SaveDialog" method="_on_file_selected"]
-[connection signal="image_path_selected" from="QR Panel/QR Generator/SaveToDevice/SaveDialog" to="QR Panel/QR Generator" method="_on_image_path_selected"]
+[connection signal="pressed" from="QR Panel/VBoxContainer/Menu/Close" to="QR Panel/VBoxContainer/Menu" method="_on_close_pressed"]
+[connection signal="pressed" from="QR Panel/VBoxContainer/Menu/Minimize" to="QR Panel/VBoxContainer/Menu" method="_on_minimize_pressed"]
+[connection signal="button_down" from="QR Panel/VBoxContainer/Menu/Header" to="QR Panel/VBoxContainer/Menu" method="_on_move_down"]
+[connection signal="button_up" from="QR Panel/VBoxContainer/Menu/Header" to="QR Panel/VBoxContainer/Menu" method="_on_move_up"]
+[connection signal="toggled" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options/AutoModulePxSize" to="QR Panel/VBoxContainer/MarginContainer/QR Generator" method="_on_auto_module_px_size_toggled"]
+[connection signal="pressed" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/Submit/Generate" to="QR Panel/VBoxContainer/MarginContainer/QR Generator" method="_on_generate_pressed"]
+[connection signal="pressed" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/QRContainer/Reset" to="QR Panel/VBoxContainer/MarginContainer/QR Generator" method="_on_reset_pressed"]
+[connection signal="android_save" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice" to="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice/SaveDialog" method="_on_save_pressed"]
+[connection signal="desktop_save" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice" to="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice/SaveDialog" method="_on_save_pressed"]
+[connection signal="ios_share" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice" to="QR Panel/VBoxContainer/MarginContainer/QR Generator" method="_on_ios_share"]
+[connection signal="pressed" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice" to="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice" method="_on_pressed"]
+[connection signal="web_download" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice" to="QR Panel/VBoxContainer/MarginContainer/QR Generator" method="_on_web_download"]
+[connection signal="canceled" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice/SaveDialog" to="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice/SaveDialog" method="_on_close_dialog"]
+[connection signal="confirmed" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice/SaveDialog" to="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice/SaveDialog" method="_on_close_dialog"]
+[connection signal="file_selected" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice/SaveDialog" to="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice/SaveDialog" method="_on_file_selected"]
+[connection signal="image_path_selected" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/SaveToDevice/SaveDialog" to="QR Panel/VBoxContainer/MarginContainer/QR Generator" method="_on_image_path_selected"]
 [connection signal="gui_input" from="ResizeController/VerticalResize" to="ResizeController" method="_on_vertical_resize"]
 [connection signal="gui_input" from="ResizeController/HorizontalResize" to="ResizeController" method="_on_horizontal_resize"]
 [connection signal="gui_input" from="ResizeController/DiagonalResize" to="ResizeController" method="_on_diagonal_resize"]
