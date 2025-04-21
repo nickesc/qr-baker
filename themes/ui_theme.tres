@@ -1,12 +1,22 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cme3dcior640w"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://cme3dcior640w"]
 
 [ext_resource type="FontFile" uid="uid://cyx8pbgbp2gyj" path="res://fonts/IBM_Plex_Mono/IBMPlexMono-Bold.ttf" id="1_gfhtu"]
 [ext_resource type="FontFile" uid="uid://co3w3pomkfkx7" path="res://fonts/IBM_Plex_Sans/IBMPlexSans-VariableFont_wdth,wght.ttf" id="2_gfhtu"]
 [ext_resource type="StyleBox" uid="uid://drjbyq1ndmpqt" path="res://themes/button_disabled.tres" id="2_l5g8p"]
 [ext_resource type="Texture2D" uid="uid://cil846tjjmcua" path="res://imgs/unchecked.png" id="2_qa7hf"]
-[ext_resource type="StyleBox" uid="uid://dtehgtp36uh71" path="res://themes/button.tres" id="3_6hnno"]
+[ext_resource type="StyleBox" uid="uid://dtehgtp36uh71" path="res://themes/button_normal.tres" id="3_ntpv8"]
 [ext_resource type="StyleBox" uid="uid://e32frx4ff7c" path="res://themes/button_pressed.tres" id="4_ntpv8"]
 [ext_resource type="StyleBox" uid="uid://tikbiteloyqs" path="res://themes/color_picker_button.tres" id="6_j8bgu"]
+[ext_resource type="FontFile" uid="uid://clek368vui3t3" path="res://fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf" id="7_6hnno"]
+[ext_resource type="StyleBox" uid="uid://b8rrd8d3tc0ex" path="res://themes/popup_menu_panel.tres" id="7_ntpv8"]
+[ext_resource type="Texture2D" uid="uid://cp2yu6vnc0ylq" path="res://imgs/down_normal.png" id="8_qwk3i"]
+[ext_resource type="StyleBox" uid="uid://byoree4d3uwd8" path="res://themes/small_button_normal.tres" id="8_rnfg8"]
+[ext_resource type="Texture2D" uid="uid://ds4erfp20lsdi" path="res://imgs/down_pressed.png" id="9_0a3p0"]
+[ext_resource type="StyleBox" uid="uid://dgvyac2j7avpr" path="res://themes/small_button_pressed.tres" id="9_ku3ou"]
+[ext_resource type="Texture2D" uid="uid://2bckk5kdtqeo" path="res://imgs/up_normal.png" id="10_nefmk"]
+[ext_resource type="Texture2D" uid="uid://cj6dubbiysrab" path="res://imgs/up_pressed.png" id="11_i14v0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ntpv8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qa7hf"]
 
@@ -31,35 +41,45 @@ Button/colors/icon_normal_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 36
 Button/fonts/font = ExtResource("1_gfhtu")
 Button/styles/disabled = ExtResource("2_l5g8p")
-Button/styles/focus = ExtResource("3_6hnno")
-Button/styles/hover = ExtResource("3_6hnno")
-Button/styles/normal = ExtResource("3_6hnno")
+Button/styles/focus = SubResource("StyleBoxEmpty_ntpv8")
+Button/styles/hover = ExtResource("3_ntpv8")
+Button/styles/normal = ExtResource("3_ntpv8")
 Button/styles/pressed = ExtResource("4_ntpv8")
 CheckBox/icons/unchecked = ExtResource("2_qa7hf")
-CheckBox/styles/disabled = ExtResource("3_6hnno")
-CheckBox/styles/focus = ExtResource("3_6hnno")
-CheckBox/styles/hover = ExtResource("3_6hnno")
-CheckBox/styles/hover_pressed = ExtResource("3_6hnno")
-CheckBox/styles/normal = ExtResource("3_6hnno")
-CheckBox/styles/pressed = ExtResource("3_6hnno")
+CheckBox/styles/disabled = ExtResource("3_ntpv8")
+CheckBox/styles/focus = ExtResource("3_ntpv8")
+CheckBox/styles/hover = ExtResource("3_ntpv8")
+CheckBox/styles/hover_pressed = ExtResource("3_ntpv8")
+CheckBox/styles/normal = ExtResource("3_ntpv8")
+CheckBox/styles/pressed = ExtResource("3_ntpv8")
+ColorPickerButton/font_sizes/font_size = 16
 ColorPickerButton/styles/normal = ExtResource("6_j8bgu")
 ColorPickerButton/styles/pressed = ExtResource("6_j8bgu")
 Label/font_sizes/font_size = 30
 LineEdit/font_sizes/font_size = 36
-LineEdit/styles/focus = ExtResource("3_6hnno")
-LineEdit/styles/normal = ExtResource("3_6hnno")
+LineEdit/styles/focus = ExtResource("3_ntpv8")
+LineEdit/styles/normal = ExtResource("3_ntpv8")
 LineEdit/styles/read_only = ExtResource("2_l5g8p")
-OptionButton/styles/pressed = ExtResource("3_6hnno")
+OptionButton/styles/pressed = ExtResource("3_ntpv8")
+PopupMenu/font_sizes/font_size = 26
+PopupMenu/font_sizes/title_font_size = 26
+PopupMenu/styles/panel = ExtResource("7_ntpv8")
 SpinBox/constants/buttons_vertical_separation = 2
-SpinBox/constants/buttons_width = 25
-SpinBox/styles/down_background = ExtResource("3_6hnno")
+SpinBox/constants/buttons_width = 50
+SpinBox/icons/down = ExtResource("8_qwk3i")
+SpinBox/icons/down_hover = ExtResource("8_qwk3i")
+SpinBox/icons/down_pressed = ExtResource("9_0a3p0")
+SpinBox/icons/up = ExtResource("10_nefmk")
+SpinBox/icons/up_hover = ExtResource("10_nefmk")
+SpinBox/icons/up_pressed = ExtResource("11_i14v0")
+SpinBox/styles/down_background = ExtResource("8_rnfg8")
 SpinBox/styles/down_background_disabled = ExtResource("2_l5g8p")
-SpinBox/styles/down_background_hovered = ExtResource("3_6hnno")
-SpinBox/styles/down_background_pressed = ExtResource("4_ntpv8")
-SpinBox/styles/up_background = ExtResource("3_6hnno")
+SpinBox/styles/down_background_hovered = ExtResource("8_rnfg8")
+SpinBox/styles/down_background_pressed = ExtResource("9_ku3ou")
+SpinBox/styles/up_background = ExtResource("8_rnfg8")
 SpinBox/styles/up_background_disabled = ExtResource("2_l5g8p")
-SpinBox/styles/up_background_hovered = ExtResource("3_6hnno")
-SpinBox/styles/up_background_pressed = ExtResource("4_ntpv8")
+SpinBox/styles/up_background_hovered = ExtResource("8_rnfg8")
+SpinBox/styles/up_background_pressed = ExtResource("9_ku3ou")
 TextEdit/colors/background_color = Color(1, 1, 1, 0)
 TextEdit/colors/caret_background_color = Color(1, 1, 1, 1)
 TextEdit/colors/caret_color = Color(0, 0, 0, 1)
@@ -70,7 +90,8 @@ TextEdit/colors/font_placeholder_color = Color(0.0980987, 0.0980984, 0.0980985, 
 TextEdit/colors/font_readonly_color = Color(0.0923973, 0.092397, 0.092397, 0.5)
 TextEdit/colors/font_selected_color = Color(0.96, 0.96, 0.96, 1)
 TextEdit/colors/selection_color = Color(0.242, 0.3674, 0.44, 0.666667)
-TextEdit/font_sizes/font_size = 36
+TextEdit/font_sizes/font_size = 30
+TextEdit/fonts/font = ExtResource("7_6hnno")
 TextEdit/styles/focus = SubResource("StyleBoxEmpty_qa7hf")
 TextEdit/styles/normal = SubResource("StyleBoxEmpty_rnfg8")
 TextEdit/styles/read_only = SubResource("StyleBoxEmpty_ep62g")
