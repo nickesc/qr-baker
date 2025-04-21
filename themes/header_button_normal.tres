@@ -1,13 +1,13 @@
-[gd_resource type="StyleBoxFlat" format=3 uid="uid://br6k6d6igpc7h"]
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://bukylj6rj8lkk"]
 
 [resource]
-content_margin_left = 5.0
+content_margin_left = 20.0
 content_margin_top = 5.0
-content_margin_right = 5.0
+content_margin_right = 20.0
 content_margin_bottom = 13.0
 bg_color = Color(0.435294, 0.435294, 0.439216, 1)
 border_width_bottom = 8
-border_color = Color(0.286275, 0.286275, 0.290196, 1)
+border_color = Color(0.2871, 0.2871, 0.29, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
