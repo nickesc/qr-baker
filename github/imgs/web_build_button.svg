@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 606 121">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #c5343d;
+      }
+
+      .cls-2 {
+        fill: #7d2027;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        font-family: IBMPlexMono-SemiBold, 'IBM Plex Mono';
+        font-size: 54px;
+        font-weight: 600;
+      }
+    </style>
+  </defs>
+  <g>
+    <rect class="cls-2" x="3" y="3" width="600" height="115" rx="5" ry="5"/>
+    <rect class="cls-1" x="3" y="3" width="600" height="100" rx="5" ry="5"/>
+  </g>
+  <text class="cls-3" transform="translate(43.804 73.98)"><tspan x="0" y="0">Launch Web Build</tspan></text>
+</svg>
