@@ -3,12 +3,21 @@ extends HBoxContainer
 var click_pos: Vector2 = Vector2.ZERO
 var moving: bool = false
 
+@onready var close: Button = $Close
+@onready var minimize: Button = $Minimize
+@onready var move: Button = $Move
+
+
 func _ready() -> void:
     match OS.get_name():
-        "Android", "iOS", "Web":
+        "Android", "iOS":
             set_visible(false)
+        "Web":
+            close.set_visible(false)
+            move.set_visible(false)
         _:
-            set_visible(true)
+            close.set_visible(true)
+            move.set_visible(true)
 
 func moveWindow():
     var new_pos: Vector2 = get_global_mouse_position() - click_pos
