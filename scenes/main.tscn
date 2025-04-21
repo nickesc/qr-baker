@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b6gfgt44t00x0"]
+[gd_scene load_steps=35 format=3 uid="uid://b6gfgt44t00x0"]
 
 [ext_resource type="Script" uid="uid://bhrfkj14sn1uo" path="res://scripts/qr_generator.gd" id="1_0wfyh"]
 [ext_resource type="Theme" uid="uid://cme3dcior640w" path="res://themes/ui_theme.tres" id="1_o5qli"]
@@ -24,6 +24,7 @@
 [ext_resource type="StyleBox" uid="uid://db1a7ynpkkvph" path="res://themes/data_input_stylebox.tres" id="13_yc10j"]
 [ext_resource type="StyleBox" uid="uid://dbu3as4mrv40u" path="res://themes/orange_button_pressed.tres" id="14_og1vs"]
 [ext_resource type="StyleBox" uid="uid://d1t1w6jjxcubi" path="res://themes/qr_container_stylebox.tres" id="15_2wyq8"]
+[ext_resource type="StyleBox" uid="uid://knp4iw2yru2j" path="res://themes/web_header_button.tres" id="16_yq6so"]
 [ext_resource type="StyleBox" uid="uid://qdenc6hhn5a1" path="res://themes/blue_button_normal.tres" id="20_og1vs"]
 [ext_resource type="StyleBox" uid="uid://c5x6nr2y1007p" path="res://themes/blue_button_pressed.tres" id="21_2wyq8"]
 [ext_resource type="StyleBox" uid="uid://br6k6d6igpc7h" path="res://themes/grey_button_normal.tres" id="23_2f3dj"]
@@ -129,9 +130,9 @@ size_flags_horizontal = 3
 theme = ExtResource("1_o5qli")
 theme_override_fonts/font = ExtResource("4_tbgi4")
 theme_override_font_sizes/font_size = 26
-theme_override_styles/hover = ExtResource("10_jscy8")
-theme_override_styles/pressed = ExtResource("10_jscy8")
-theme_override_styles/normal = ExtResource("10_jscy8")
+theme_override_styles/hover = ExtResource("16_yq6so")
+theme_override_styles/pressed = ExtResource("16_yq6so")
+theme_override_styles/normal = ExtResource("16_yq6so")
 text = "QR Baker"
 icon_alignment = 2
 
