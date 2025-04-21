@@ -123,7 +123,7 @@ icon_alignment = 2
 
 [node name="WebHeader" type="Button" parent="QR Panel/QR Generator/Menu"]
 visible = false
-custom_minimum_size = Vector2(40, 0)
+custom_minimum_size = Vector2(40, 120)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_o5qli")
@@ -182,7 +182,7 @@ layout_mode = 2
 text = "   "
 
 [node name="ErrorCorrection" type="OptionButton" parent="QR Panel/QR Generator/Properties/Options"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_o5qli")
@@ -207,7 +207,7 @@ text = "Background Color"
 layout_mode = 2
 
 [node name="LightModuleColor" type="ColorPickerButton" parent="QR Panel/QR Generator/Properties/Options"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
@@ -223,7 +223,7 @@ text = "Foreground Color"
 layout_mode = 2
 
 [node name="DarkModuleColor" type="ColorPickerButton" parent="QR Panel/QR Generator/Properties/Options"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
@@ -243,7 +243,7 @@ theme = ExtResource("1_o5qli")
 layout_mode = 2
 
 [node name="ModulePxSize" type="SpinBox" parent="QR Panel/QR Generator/Properties/Options"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
@@ -262,7 +262,7 @@ text = "Border Size"
 layout_mode = 2
 
 [node name="QuietZoneSize" type="SpinBox" parent="QR Panel/QR Generator/Properties/Options"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
@@ -281,7 +281,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_o6xl0")
 layout_mode = 2
 
 [node name="Generate" type="Button" parent="QR Panel/QR Generator/Submit"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_o5qli")
