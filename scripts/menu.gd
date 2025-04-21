@@ -5,7 +5,8 @@ var moving: bool = false
 
 @onready var close: Button = $Close
 @onready var minimize: Button = $Minimize
-@onready var move: Button = $Move
+@onready var header: Button = $Header
+@onready var web_header: Button = $WebHeader
 
 
 func _ready() -> void:
@@ -14,12 +15,12 @@ func _ready() -> void:
             set_visible(false)
         "Web":
             close.set_visible(false)
-            move.set_visible(false)
+            header.set_visible(false)
+            web_header.set_visible(true)
         "macOS":
             minimize.set_visible(false)
         _:
-            close.set_visible(true)
-            move.set_visible(true)
+            pass
 
 func moveWindow():
     var new_pos: Vector2 = get_global_mouse_position() - click_pos

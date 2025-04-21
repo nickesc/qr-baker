@@ -104,7 +104,7 @@ icon_alignment = 1
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 2
 
-[node name="Move" type="Button" parent="QR Panel/QR Generator/Menu"]
+[node name="Header" type="Button" parent="QR Panel/QR Generator/Menu"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -116,6 +116,20 @@ theme_override_styles/pressed = ExtResource("11_pm3ni")
 theme_override_styles/normal = ExtResource("10_jscy8")
 text = "QR Baker"
 icon = ExtResource("5_o6xl0")
+icon_alignment = 2
+
+[node name="WebHeader" type="Button" parent="QR Panel/QR Generator/Menu"]
+visible = false
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_o5qli")
+theme_override_fonts/font = ExtResource("4_tbgi4")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/hover = ExtResource("10_jscy8")
+theme_override_styles/pressed = ExtResource("10_jscy8")
+theme_override_styles/normal = ExtResource("10_jscy8")
+text = "QR Baker"
 icon_alignment = 2
 
 [node name="Line3" type="HSeparator" parent="QR Panel/QR Generator"]
@@ -399,8 +413,8 @@ mouse_default_cursor_shape = 12
 
 [connection signal="pressed" from="QR Panel/QR Generator/Menu/Close" to="QR Panel/QR Generator/Menu" method="_on_close_pressed"]
 [connection signal="pressed" from="QR Panel/QR Generator/Menu/Minimize" to="QR Panel/QR Generator/Menu" method="_on_minimize_pressed"]
-[connection signal="button_down" from="QR Panel/QR Generator/Menu/Move" to="QR Panel/QR Generator/Menu" method="_on_move_down"]
-[connection signal="button_up" from="QR Panel/QR Generator/Menu/Move" to="QR Panel/QR Generator/Menu" method="_on_move_up"]
+[connection signal="button_down" from="QR Panel/QR Generator/Menu/Header" to="QR Panel/QR Generator/Menu" method="_on_move_down"]
+[connection signal="button_up" from="QR Panel/QR Generator/Menu/Header" to="QR Panel/QR Generator/Menu" method="_on_move_up"]
 [connection signal="toggled" from="QR Panel/QR Generator/Properties/Options/AutoModulePxSize" to="QR Panel/QR Generator" method="_on_auto_module_px_size_toggled"]
 [connection signal="pressed" from="QR Panel/QR Generator/Submit/Generate" to="QR Panel/QR Generator" method="_on_generate_pressed"]
 [connection signal="pressed" from="QR Panel/QR Generator/QRContainer/Reset" to="QR Panel/QR Generator" method="_on_reset_pressed"]
