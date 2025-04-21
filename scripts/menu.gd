@@ -15,6 +15,8 @@ func _ready() -> void:
         "Web":
             close.set_visible(false)
             move.set_visible(false)
+        "macOS":
+            minimize.set_visible(false)
         _:
             close.set_visible(true)
             move.set_visible(true)
