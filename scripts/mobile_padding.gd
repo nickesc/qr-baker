@@ -1,7 +1,7 @@
 extends PanelContainer
 
-var panel_style_box: StyleBox = preload("res://themes/panelStyleBox.tres")
-var mobile_style_box: StyleBox = preload("res://themes/mobileStyleBox.tres")
+var panel_style_box: StyleBox = preload("res://themes/panel_stylebox.tres")
+var mobile_style_box: StyleBox = preload("res://themes/mobile_stylebox.tres")
 
 func _ready() -> void:
     match OS.get_name():
