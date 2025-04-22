@@ -41,12 +41,12 @@
 The main goal of **QR Baker** is to make it easy to open the app, make a QR code, then save it. It shouldn't take ads, or an internet connection, or a watermark, or in-app purchases, or an account, or a battle pass to make a QR code.
 
 > [!TIP]
-> To move the window, click-and-drag the grey <img src="imgs/menu.svg" width=16> button in the top right corner on platforms where it's supported.
+> To move the window, click-and-drag the grey <img src="imgs/menu.svg" width=16> button in the menu bar on platforms where it's supported.
 
-Download installable builds from the [Releases](https://github.com/nickesc/qr-baker/releases) page, or open the web build by clicking bellow:
+Download installable builds from the [Releases](https://github.com/nickesc/qr-baker/releases) page, or open the web build by clicking below:
 
 <div align = "center">
-  <a href="https://nickesc.github.io/qr-baker"><img src="github/imgs/web_build_button.svg" width=200 alt="QR Baker screenshot"></a>
+  <a href="https://nickesc.github.io/qr-baker"><img src="github/imgs/web_build_button.png" width=300 alt="QR Baker screenshot"></a>
 </div>
 
 ## Supported Platforms:
@@ -63,7 +63,7 @@ These platforms are currently supported, with builds available on the [Releases]
 - [x] iOS
 
 ### Other
-- [x] [Web](https://nickesc.github.io/qr-baker)
+- [x] Web
 
 > [!WARNING] 
 > QR Baker is untested on some architectures: 
