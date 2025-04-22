@@ -24,7 +24,10 @@
 [ext_resource type="StyleBox" uid="uid://db1a7ynpkkvph" path="res://themes/data_input_stylebox.tres" id="13_yc10j"]
 [ext_resource type="StyleBox" uid="uid://dbu3as4mrv40u" path="res://themes/orange_button_pressed.tres" id="14_og1vs"]
 [ext_resource type="StyleBox" uid="uid://d1t1w6jjxcubi" path="res://themes/qr_container_stylebox.tres" id="15_2wyq8"]
+[ext_resource type="StyleBox" uid="uid://dqcru8d23c1nl" path="res://themes/green_button_normal.tres" id="16_qkpxi"]
 [ext_resource type="StyleBox" uid="uid://knp4iw2yru2j" path="res://themes/web_header_button.tres" id="16_yq6so"]
+[ext_resource type="StyleBox" uid="uid://dga3mqg0q7pw0" path="res://themes/green_button_pressed.tres" id="17_5q0nq"]
+[ext_resource type="Texture2D" uid="uid://cpdarw6yilrx7" path="res://imgs/question-mark.svg" id="18_qkpxi"]
 [ext_resource type="StyleBox" uid="uid://qdenc6hhn5a1" path="res://themes/blue_button_normal.tres" id="20_og1vs"]
 [ext_resource type="StyleBox" uid="uid://c5x6nr2y1007p" path="res://themes/blue_button_pressed.tres" id="21_2wyq8"]
 [ext_resource type="StyleBox" uid="uid://br6k6d6igpc7h" path="res://themes/grey_button_normal.tres" id="23_2f3dj"]
@@ -133,6 +136,21 @@ theme_override_styles/normal = ExtResource("16_yq6so")
 text = "QR Baker"
 icon_alignment = 2
 
+[node name="Separator2" type="Control" parent="QR Panel/VBoxContainer/Menu"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="Help" type="Button" parent="QR Panel/VBoxContainer/Menu"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = ExtResource("16_qkpxi")
+theme_override_styles/pressed = ExtResource("17_5q0nq")
+theme_override_styles/normal = ExtResource("16_qkpxi")
+icon = ExtResource("18_qkpxi")
+icon_alignment = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="QR Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -143,7 +161,6 @@ theme_override_constants/margin_right = 20
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("1_0wfyh")
-DEFAULT_LIGHT_MODULE_COLOR = Color(1, 1, 1, 1)
 
 [node name="Line3" type="HSeparator" parent="QR Panel/VBoxContainer/MarginContainer/QR Generator"]
 layout_mode = 2
@@ -438,6 +455,7 @@ mouse_default_cursor_shape = 12
 [connection signal="pressed" from="QR Panel/VBoxContainer/Menu/Minimize" to="QR Panel/VBoxContainer/Menu" method="_on_minimize_pressed"]
 [connection signal="button_down" from="QR Panel/VBoxContainer/Menu/Header" to="QR Panel/VBoxContainer/Menu" method="_on_move_down"]
 [connection signal="button_up" from="QR Panel/VBoxContainer/Menu/Header" to="QR Panel/VBoxContainer/Menu" method="_on_move_up"]
+[connection signal="pressed" from="QR Panel/VBoxContainer/Menu/Help" to="QR Panel/VBoxContainer/Menu" method="_on_help_pressed"]
 [connection signal="toggled" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/Properties/Options/AutoModulePxSize" to="QR Panel/VBoxContainer/MarginContainer/QR Generator" method="_on_auto_module_px_size_toggled"]
 [connection signal="pressed" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/Submit/Generate" to="QR Panel/VBoxContainer/MarginContainer/QR Generator" method="_on_generate_pressed"]
 [connection signal="pressed" from="QR Panel/VBoxContainer/MarginContainer/QR Generator/QRContainer/Reset" to="QR Panel/VBoxContainer/MarginContainer/QR Generator" method="_on_reset_pressed"]

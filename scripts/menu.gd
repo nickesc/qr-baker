@@ -50,3 +50,7 @@ func _on_move_up():
     print("stopped")
     header.set_default_cursor_shape(Control.CURSOR_POINTING_HAND)
     moving=false
+
+
+func _on_help_pressed() -> void:
+    OS.shell_open("https://github.com/nickesc/qr-baker/blob/main/README.md")
