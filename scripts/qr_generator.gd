@@ -93,8 +93,8 @@ func get_current_qr_options() -> Dictionary:
             light_modules_picker.get_pick_color(), 
             dark_modules_picker.get_pick_color(), 
             auto_module_px_size_checkbox.is_pressed(), 
-            module_px_size_spinner.get_value(), 
-            quiet_zone_size_spinner.get_value()
+            int(module_px_size_spinner.get_value()), 
+            int(quiet_zone_size_spinner.get_value())
         )
 
 func set_qr_rect(options: Dictionary) -> Dictionary:

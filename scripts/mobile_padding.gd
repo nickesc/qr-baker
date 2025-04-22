@@ -41,11 +41,11 @@ func scale_minimum_size(node: Control, scale_x: float, scale_y: float):
 
 func scale_input_font(node: Control, font_scale: float, item_name: StringName = "font_size"):
     var new_font_size: float = node.get_theme_font_size(item_name) * font_scale
-    node.add_theme_font_size_override(item_name, new_font_size)
+    node.add_theme_font_size_override(item_name, int(new_font_size))
 
 func scale_spinbox_arrows(node: SpinBox, arrow_scale: float):
     var new_width: float = node.get_theme_constant("buttons_width") * arrow_scale
-    node.add_theme_constant_override("buttons_width", new_width)
+    node.add_theme_constant_override("buttons_width", int(new_width))
 
 func update_theme_for_mobile():
     for item in buttons:
