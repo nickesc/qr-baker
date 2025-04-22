@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="QR Baker"
-config/version="0.3.0"
+config/version="0.3.2"
 run/main_scene="uid://b6gfgt44t00x0"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 0)
 boot_splash/image="uid://7h1u5tras8ek"
 config/icon="uid://baeeyjw52m0hc"
+
+[audio]
+
+general/ios/mix_with_others=true
 
 [display]
 
