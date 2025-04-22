@@ -8,11 +8,16 @@ var moving: bool = false
 @onready var separator: Control = $Separator
 @onready var header: Button = $Header
 @onready var web_header: Button = $WebHeader
+@onready var separator2: Control = $Separator2
+@onready var help: Button = $Help
 
+@export_group("Components")
+@export var highest_content: HBoxContainer
 
 func _ready() -> void:
     match OS.get_name():
         "Android", "iOS":
+            help.reparent(highest_content)
             set_visible(false)
         "Web":
             close.set_visible(false)
@@ -39,6 +44,9 @@ func _on_close_pressed() -> void:
 func _on_minimize_pressed() -> void:
     print("minimize")
     DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MINIMIZED)
+    
+func _on_help_pressed() -> void:
+    OS.shell_open("https://github.com/nickesc/qr-baker/blob/main/README.md")
 
 func _on_move_down() -> void:
     print("moving")
@@ -50,7 +58,3 @@ func _on_move_up():
     print("stopped")
     header.set_default_cursor_shape(Control.CURSOR_POINTING_HAND)
     moving=false
-
-
-func _on_help_pressed() -> void:
-    OS.shell_open("https://github.com/nickesc/qr-baker/blob/main/README.md")
