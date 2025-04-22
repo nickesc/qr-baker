@@ -43,7 +43,7 @@ func _on_minimize_pressed() -> void:
 func _on_move_down() -> void:
     print("moving")
     header.set_default_cursor_shape(Control.CURSOR_DRAG)
-    click_pos = get_local_mouse_position() + Vector2(30,30)
+    click_pos = get_local_mouse_position() + Vector2(20,20)
     moving = true
 
 func _on_move_up():
