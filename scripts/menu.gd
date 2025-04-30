@@ -11,8 +11,20 @@ var moving: bool = false
 @onready var separator2: Control = $Separator2
 @onready var help: Button = $Help
 
-@export_group("Components")
+@export_category("Components")
 @export var highest_content: HBoxContainer
+
+@export_group("Screens")
+@export var qr_generator: Control
+@export var more_screen: Control
+@export var help_screen: Control
+@export var history_screen: Control
+@export var batch_screen: Control
+@export var options_screen: Control
+
+#@onready var screens: Array[Control] = [qr_generator, help_screen, history_screen, batch_screen, options_screen]
+
+#var screen_stack: Array[Control] = [qr_generator]
 
 func _ready() -> void:
     match OS.get_name():
@@ -29,6 +41,20 @@ func _ready() -> void:
             minimize.set_visible(false)
         _:
             pass
+            
+    swap_app_screen(qr_generator)
+
+func swap_app_screen(target: Control = null):
+    qr_generator.hide()
+    more_screen.hide()
+    help_screen.hide()
+    
+    history_screen.hide()
+    batch_screen.hide()
+    options_screen.hide()
+    
+    if target:
+        target.show()
 
 func moveWindow():
     var new_pos: Vector2 = get_global_mouse_position() - click_pos
@@ -47,6 +73,13 @@ func _on_minimize_pressed() -> void:
     
 func _on_help_pressed() -> void:
     OS.shell_open("https://github.com/nickesc/qr-baker/blob/main/README.md")
+
+func _on_more_pressed():
+    if not more_screen.visible:
+        swap_app_screen(more_screen)
+    else:
+        swap_app_screen(qr_generator)
+    
 
 func _on_move_down() -> void:
     print("moving")
