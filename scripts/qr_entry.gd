@@ -5,7 +5,7 @@ signal edit_entry(qr_options: Dictionary)
 signal delete_entry(id: String)
 
 @onready var qr: QRCodeRect = $EntryPanel/EntryContents/CodePanel/AspectRatioContainer/QR
-@onready var data_label: Label = $EntryPanel/EntryContents/EntryData/QRCodeData
+@onready var data_label: Label = $EntryPanel/EntryContents/EntryData/Control/QRCodeData
 @onready var datetime_label: Label = $EntryPanel/EntryContents/EntryData/GeneratedDatetime
 
 #var reset: bool = false

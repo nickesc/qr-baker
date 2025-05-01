@@ -60,15 +60,23 @@ size_flags_vertical = 0
 
 [node name="EntryData" type="VBoxContainer" parent="EntryPanel/EntryContents"]
 layout_mode = 2
-
-[node name="QRCodeData" type="Label" parent="EntryPanel/EntryContents/EntryData"]
-layout_mode = 2
-text = "QR CODE DATA"
-label_settings = SubResource("LabelSettings_uqhhh")
+size_flags_horizontal = 3
 
 [node name="Control" type="Control" parent="EntryPanel/EntryContents/EntryData"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="QRCodeData" type="Label" parent="EntryPanel/EntryContents/EntryData/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QR CODE DATA"
+label_settings = SubResource("LabelSettings_uqhhh")
+autowrap_mode = 3
+text_overrun_behavior = 3
 
 [node name="GeneratedDatetime" type="Label" parent="EntryPanel/EntryContents/EntryData"]
 layout_mode = 2
@@ -78,7 +86,6 @@ label_settings = SubResource("LabelSettings_6gaa7")
 [node name="Separator" type="Control" parent="EntryPanel/EntryContents"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="Save" type="Button" parent="EntryPanel/EntryContents"]
 custom_minimum_size = Vector2(40, 60)

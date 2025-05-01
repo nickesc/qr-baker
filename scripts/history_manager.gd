@@ -37,7 +37,6 @@ func write_entry_to_history(entry: Dictionary) -> Dictionary:
         entry.light_module_color = entry.light_module_color.to_html()
     if entry.dark_module_color or entry.dark_module_color == Color(0, 0, 0, 1):
         entry.dark_module_color = entry.dark_module_color.to_html()
-    print("entry, ",entry.dark_module_color)
     history.history.push_front(entry)
     save_history(history)
     return entry

@@ -28,10 +28,6 @@ signal qr_set(qr_options: Dictionary)
 func _ready() -> void:
     reset_qr_to_default()
     print(get_data())
-    #print(get_qr_options())
-    #reset_qr_to_default()
-    #print(get_qr_options())
-    #_hidden_defaults()
     pass
     
 func qr_options(
