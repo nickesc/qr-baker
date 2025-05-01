@@ -57,6 +57,11 @@ func swap_app_screen(target: Control = null):
     batch_screen.hide()
     options_screen.hide()
     
+    if target == qr_generator:
+        more.icon = load("res://imgs/dots-vertical.svg")
+    else:
+        more.icon = load("res://imgs/home.svg")
+    
     if target:
         target.show()
 
