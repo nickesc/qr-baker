@@ -2,13 +2,14 @@ extends Node
 
 const QRCode = preload("res://addons/qr_code/qr_code.gd")
 
-signal qr_saved(exit_code: int)
+signal qr_saved(exit_code: int, qr: QRCodeRect)
 
 var qr: QRCodeRect
 
 # Image Saver Definitions
 
 @onready var save_dialog: FileDialog = $SaveDialog
+@onready var history_manager: Node = $HistoryManager
 
 var share_ios: Share
 
@@ -35,11 +36,21 @@ func _ready() -> void:
         _:
             pass
 
+func _on_save_entry(target_qr: QRCodeRect) -> void:
+    print("help")
+    save_to_device(target_qr)
+
+func _on_save_qr(target_qr: QRCodeRect) -> void:
+    save_to_device(target_qr)
+
+func _on_image_path_selected(filename: String, directory: String) -> void:
+    save_qr_to_directory(filename, directory)
+
 func set_qr(curr_qr: QRCodeRect) -> QRCodeRect:
     qr = curr_qr
     return curr_qr
 
-func save_to_device(target_qr: QRCodeRect, history: bool = true):
+func save_to_device(target_qr: QRCodeRect):
     set_qr(target_qr)
     
     match OS.get_name():
@@ -52,18 +63,8 @@ func save_to_device(target_qr: QRCodeRect, history: bool = true):
         _:
             save_with_file_dialog()
 
-func _on_save_entry(target_qr: QRCodeRect) -> void:
-    save_to_device(target_qr)
-
-func _on_save_qr(target_qr: QRCodeRect) -> void:
-    save_to_device(target_qr)
-    print(target_qr.get_qr_options())
-
 func save_with_file_dialog():
     save_dialog.start_save()
-
-func _on_image_path_selected(filename: String, directory: String) -> void:
-    save_qr_to_directory(filename, directory)
     
 func ios_share() -> void:
     var img: Image = qr.generate_qr_image()
@@ -74,11 +75,18 @@ func ios_share() -> void:
     var content: String = "QR Code"
     
     share_ios.share_image(OS.get_user_data_dir()+"/"+DEFAULT_MOBILE_FILENAME, title, subject, content)
+    
+    var exit_code: int = 0    
+    qr_saved.emit(exit_code, qr)
 
 func web_download() -> void:
     var img: Image = qr.generate_qr_image()
     var buffer: PackedByteArray = img.save_png_to_buffer()
+    
     JavaScriptBridge.download_buffer(buffer,DEFAULT_WEB_FILENAME, "image/png")
+
+    var exit_code: int = 0    
+    qr_saved.emit(exit_code, qr)
     
 func save_qr_to_directory(filename: String, directory: String) -> void:
     var img: Image = qr.generate_qr_image()
@@ -99,7 +107,7 @@ func save_qr_to_directory(filename: String, directory: String) -> void:
         _:
             exit_code = ExitCodes.UNSUPPORTED_OS
     
-    qr_saved.emit(exit_code)
+    qr_saved.emit(exit_code, qr)
 
 func save_to_unix(filename: String, target_dir: String, debug: bool=false, dry: bool=false) -> int:
     #var home_path: String = OS.get_environment("HOME")

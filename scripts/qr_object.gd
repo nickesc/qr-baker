@@ -4,6 +4,9 @@ extends QRCodeRect
 
 signal qr_set(qr_options: Dictionary)
 
+@export_category("Properties")
+@export var save_to_history: bool = true
+
 @export_category("Default QR Options")
 @export var DEFAULT_DATA: String = ""
 @export var DEFAULT_ERROR_CORRECTION: QRCode.ErrorCorrection = QRCode.ErrorCorrection.MEDIUM

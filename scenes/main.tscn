@@ -37,11 +37,11 @@
 [ext_resource type="Script" uid="uid://6hxxu0yhs6oq" path="res://scripts/more_screen.gd" id="33_j8jky"]
 [ext_resource type="Script" uid="uid://by8h5prux6xmf" path="res://scripts/help_screen.gd" id="35_kmb1v"]
 [ext_resource type="Script" uid="uid://drueiy78legxr" path="res://scripts/favorites_screen.gd" id="36_5he1u"]
-[ext_resource type="PackedScene" uid="uid://dul1g1cx8jh28" path="res://objects/qr_entry.tscn" id="36_5poiv"]
 [ext_resource type="Script" uid="uid://dvp5sb6qv06ty" path="res://scripts/history_screen.gd" id="36_fuf3a"]
 [ext_resource type="Script" uid="uid://btl704ifmxmrn" path="res://scripts/batch_screen.gd" id="36_pibwh"]
 [ext_resource type="Script" uid="uid://d3lekeohkbd1d" path="res://scripts/options_screen.gd" id="37_c6pm6"]
 [ext_resource type="Script" uid="uid://oyall1xw1afd" path="res://scripts/qr_saver.gd" id="41_2cjbq"]
+[ext_resource type="Script" uid="uid://b7mri2s1t45el" path="res://scripts/history_manager.gd" id="43_chjal"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jyhfs"]
 
@@ -478,45 +478,41 @@ text = "Back
 "
 expand_icon = true
 
-[node name="History Screen" type="VBoxContainer" parent="App Panel/VBoxContainer/MarginContainer" node_paths=PackedStringArray("menu")]
+[node name="History Screen" type="VBoxContainer" parent="App Panel/VBoxContainer/MarginContainer" node_paths=PackedStringArray("menu", "history_manager", "qr_saver")]
 visible = false
 layout_mode = 2
 script = ExtResource("36_fuf3a")
 menu = NodePath("../../Menu")
+history_manager = NodePath("../../../../QRSaver/HistoryManager")
+qr_saver = NodePath("../../../../QRSaver")
 
 [node name="Separator" type="Control" parent="App Panel/VBoxContainer/MarginContainer/History Screen"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="App Panel/VBoxContainer/MarginContainer/History Screen"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="App Panel/VBoxContainer/MarginContainer/History Screen/HBoxContainer"]
+layout_mode = 2
+text = "History"
+
+[node name="Control" type="Control" parent="App Panel/VBoxContainer/MarginContainer/History Screen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Clear" type="Button" parent="App Panel/VBoxContainer/MarginContainer/History Screen/HBoxContainer"]
+layout_mode = 2
+text = "Clear"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="App Panel/VBoxContainer/MarginContainer/History Screen"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Control" type="VBoxContainer" parent="App Panel/VBoxContainer/MarginContainer/History Screen/ScrollContainer"]
+[node name="HistoryList" type="VBoxContainer" parent="App Panel/VBoxContainer/MarginContainer/History Screen/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="QREntry" parent="App Panel/VBoxContainer/MarginContainer/History Screen/ScrollContainer/Control" instance=ExtResource("36_5poiv")]
-layout_mode = 2
-
-[node name="QREntry2" parent="App Panel/VBoxContainer/MarginContainer/History Screen/ScrollContainer/Control" instance=ExtResource("36_5poiv")]
-layout_mode = 2
-
-[node name="QREntry3" parent="App Panel/VBoxContainer/MarginContainer/History Screen/ScrollContainer/Control" instance=ExtResource("36_5poiv")]
-layout_mode = 2
-
-[node name="QREntry4" parent="App Panel/VBoxContainer/MarginContainer/History Screen/ScrollContainer/Control" instance=ExtResource("36_5poiv")]
-layout_mode = 2
-
-[node name="QREntry5" parent="App Panel/VBoxContainer/MarginContainer/History Screen/ScrollContainer/Control" instance=ExtResource("36_5poiv")]
-layout_mode = 2
-
-[node name="QREntry6" parent="App Panel/VBoxContainer/MarginContainer/History Screen/ScrollContainer/Control" instance=ExtResource("36_5poiv")]
-layout_mode = 2
-
-[node name="QREntry7" parent="App Panel/VBoxContainer/MarginContainer/History Screen/ScrollContainer/Control" instance=ExtResource("36_5poiv")]
-layout_mode = 2
 
 [node name="Separator2" type="Control" parent="App Panel/VBoxContainer/MarginContainer/History Screen"]
 custom_minimum_size = Vector2(0, 20)
@@ -672,6 +668,9 @@ filters = PackedStringArray("*.png;PNG File;image/png")
 use_native_dialog = true
 script = ExtResource("9_85g3d")
 
+[node name="HistoryManager" type="Node" parent="QRSaver"]
+script = ExtResource("43_chjal")
+
 [connection signal="pressed" from="App Panel/VBoxContainer/Menu/Close" to="App Panel/VBoxContainer/Menu" method="_on_close_pressed"]
 [connection signal="pressed" from="App Panel/VBoxContainer/Menu/Minimize" to="App Panel/VBoxContainer/Menu" method="_on_minimize_pressed"]
 [connection signal="button_down" from="App Panel/VBoxContainer/Menu/Header" to="App Panel/VBoxContainer/Menu" method="_on_move_down"]
@@ -689,7 +688,8 @@ script = ExtResource("9_85g3d")
 [connection signal="pressed" from="App Panel/VBoxContainer/MarginContainer/More Screen/Options" to="App Panel/VBoxContainer/MarginContainer/More Screen" method="_on_options_pressed"]
 [connection signal="pressed" from="App Panel/VBoxContainer/MarginContainer/More Screen/Help" to="App Panel/VBoxContainer/MarginContainer/More Screen" method="_on_help_pressed"]
 [connection signal="pressed" from="App Panel/VBoxContainer/MarginContainer/More Screen/Back" to="App Panel/VBoxContainer/MarginContainer/More Screen" method="_on_back_pressed"]
-[connection signal="save_entry_qr" from="App Panel/VBoxContainer/MarginContainer/History Screen/ScrollContainer/Control/QREntry" to="QRSaver" method="_on_save_entry"]
+[connection signal="visibility_changed" from="App Panel/VBoxContainer/MarginContainer/History Screen" to="App Panel/VBoxContainer/MarginContainer/History Screen" method="_on_visibility_changed"]
+[connection signal="pressed" from="App Panel/VBoxContainer/MarginContainer/History Screen/HBoxContainer/Clear" to="App Panel/VBoxContainer/MarginContainer/History Screen" method="_on_clear_pressed"]
 [connection signal="pressed" from="App Panel/VBoxContainer/MarginContainer/History Screen/Back" to="App Panel/VBoxContainer/MarginContainer/History Screen" method="_on_back_pressed"]
 [connection signal="pressed" from="App Panel/VBoxContainer/MarginContainer/Favorites Screen/Back" to="App Panel/VBoxContainer/MarginContainer/Favorites Screen" method="_on_back_pressed"]
 [connection signal="pressed" from="App Panel/VBoxContainer/MarginContainer/Batch Screen/Back" to="App Panel/VBoxContainer/MarginContainer/Batch Screen" method="_on_back_pressed"]
@@ -698,6 +698,7 @@ script = ExtResource("9_85g3d")
 [connection signal="gui_input" from="ResizeController/VerticalResize" to="ResizeController" method="_on_vertical_resize"]
 [connection signal="gui_input" from="ResizeController/HorizontalResize" to="ResizeController" method="_on_horizontal_resize"]
 [connection signal="gui_input" from="ResizeController/DiagonalResize" to="ResizeController" method="_on_diagonal_resize"]
+[connection signal="qr_saved" from="QRSaver" to="QRSaver/HistoryManager" method="_on_qr_saved"]
 [connection signal="canceled" from="QRSaver/SaveDialog" to="QRSaver/SaveDialog" method="_on_close_dialog"]
 [connection signal="confirmed" from="QRSaver/SaveDialog" to="QRSaver/SaveDialog" method="_on_close_dialog"]
 [connection signal="file_selected" from="QRSaver/SaveDialog" to="QRSaver/SaveDialog" method="_on_file_selected"]

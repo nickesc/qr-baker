@@ -123,7 +123,7 @@ icon = ExtResource("9_ovgpf")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Trash" type="Button" parent="EntryPanel/EntryContents"]
+[node name="Delete" type="Button" parent="EntryPanel/EntryContents"]
 custom_minimum_size = Vector2(40, 60)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -154,6 +154,9 @@ layout_mode = 2
 texture = SubResource("ImageTexture_6gaa7")
 expand_mode = 1
 script = ExtResource("17_kwkrw")
+save_to_history = false
 metadata/_custom_type_script = "uid://dynulhnyq5hpq"
 
 [connection signal="pressed" from="EntryPanel/EntryContents/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="EntryPanel/EntryContents/Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="EntryPanel/EntryContents/Delete" to="." method="_on_delete_pressed"]
