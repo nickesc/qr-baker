@@ -7,7 +7,8 @@ const QRCode = preload("res://addons/qr_code/qr_code.gd")
 
 # Generator Definitions
 
-signal qr_generated
+signal qr_generated(qr_options: Dictionary)
+signal save_qr(qr: QRCodeRect)
 signal qr_saved(exit_code: int)
 
 @export_category("Default QR Options")
@@ -107,7 +108,7 @@ func set_qr_rect(options: Dictionary) -> Dictionary:
         qr.set_module_px_size(options.module_px_size)
     qr.set_quiet_zone_size(options.quiet_zone_size)
     
-    qr_generated.emit(options.data)
+    qr_generated.emit(options)
     
     return options
 

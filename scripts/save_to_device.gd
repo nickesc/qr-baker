@@ -1,13 +1,9 @@
 extends Button
 
-signal ios_share(share: Share)
+signal ios_share
 signal android_save
 signal web_download
 signal desktop_save
-
-@onready var save_dialog: FileDialog = $SaveDialog
-
-var share_ios: Share
 
 const mobile_button_height: int = 150
 
@@ -19,12 +15,9 @@ const web_button_text: String = "Download Image"
 func _ready() -> void:
     match OS.get_name():
         "Android":
-            OS.request_permissions()
             set_text(android_button_text)
             custom_minimum_size.y = mobile_button_height
         "iOS":
-            share_ios = Share.new()
-            add_child(share_ios)
             set_text(ios_button_text)
             custom_minimum_size.y = mobile_button_height
         "Web":
@@ -37,7 +30,7 @@ func _on_pressed() -> void:
         "Android":
             android_save.emit()
         "iOS":
-            ios_share.emit(share_ios)
+            ios_share.emit()
         "Web":
             web_download.emit()
         _:
