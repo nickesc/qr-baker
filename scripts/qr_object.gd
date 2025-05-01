@@ -66,8 +66,8 @@ func get_qr_options() -> Dictionary:
 func set_qr_options(options: Dictionary) -> Dictionary:
     set_data(options.data)
     set_error_correction(options.error_correction)
-    set_light_module_color(options.light_module_color)
-    set_dark_module_color(options.dark_module_color)
+    set_light_module_color(Color(options.light_module_color))
+    set_dark_module_color(Color(options.dark_module_color))
     set_auto_module_px_size(options.auto_module_px_size)
     if not options.auto_module_px_size:
         set_module_px_size(options.module_px_size)
