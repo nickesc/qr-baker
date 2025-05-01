@@ -35,13 +35,30 @@ func _ready() -> void:
         _:
             pass
 
-func _on_save_pressed():
+func set_qr(curr_qr: QRCodeRect) -> QRCodeRect:
+    qr = curr_qr
+    return curr_qr
+
+func _on_save_qr(target_qr: QRCodeRect) -> void:
+    set_qr(target_qr)
+    
+    match OS.get_name():
+        "Android":
+            save_with_file_dialog()
+        "iOS":
+            ios_share()
+        "Web":
+            web_download()
+        _:
+            save_with_file_dialog()
+
+func save_with_file_dialog():
     save_dialog.start_save()
 
 func _on_image_path_selected(filename: String, directory: String) -> void:
     save_qr_to_directory(filename, directory)
     
-func _on_ios_share() -> void:
+func ios_share() -> void:
     var img: Image = qr.generate_qr_image()
     img.save_png("user://"+DEFAULT_MOBILE_FILENAME)
     
@@ -51,7 +68,7 @@ func _on_ios_share() -> void:
     
     share_ios.share_image(OS.get_user_data_dir()+"/"+DEFAULT_MOBILE_FILENAME, title, subject, content)
 
-func _on_web_download() -> void:
+func web_download() -> void:
     var img: Image = qr.generate_qr_image()
     var buffer: PackedByteArray = img.save_png_to_buffer()
     JavaScriptBridge.download_buffer(buffer,DEFAULT_WEB_FILENAME, "image/png")

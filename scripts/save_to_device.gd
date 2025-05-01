@@ -1,10 +1,5 @@
 extends Button
 
-signal ios_share
-signal android_save
-signal web_download
-signal desktop_save
-
 const mobile_button_height: int = 150
 
 const desktop_button_text: String = "Save Image"
@@ -24,14 +19,3 @@ func _ready() -> void:
             set_text(web_button_text)
         _:
             set_text(desktop_button_text)
-            
-func _on_pressed() -> void:    
-    match OS.get_name():
-        "Android":
-            android_save.emit()
-        "iOS":
-            ios_share.emit()
-        "Web":
-            web_download.emit()
-        _:
-            desktop_save.emit()

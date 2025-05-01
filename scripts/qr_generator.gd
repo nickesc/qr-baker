@@ -57,6 +57,9 @@ func qr_options(
 func _on_auto_module_px_size_toggled(toggled_on: bool) -> void:
     module_px_size_spinner.editable = not toggled_on
 
+func _on_save_to_device_pressed() -> void:
+    save_qr.emit(qr)
+
 func _on_reset_pressed() -> void:
     data_field.set_text(DEFAULT_DATA)
     error_correction_option.select(error_correction_option.get_item_index(DEFAULT_ERROR_CORRECTION))
