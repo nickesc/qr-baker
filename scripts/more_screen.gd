@@ -22,3 +22,8 @@ func _on_options_pressed() -> void:
 func _on_help_pressed() -> void:
     if menu:
         menu.swap_app_screen(menu.help_screen)
+
+
+func _on_favorites_pressed() -> void:
+    if menu:
+        menu.swap_app_screen(menu.favorites_screen)

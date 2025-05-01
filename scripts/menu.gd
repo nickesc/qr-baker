@@ -19,6 +19,7 @@ var moving: bool = false
 @export var more_screen: Control
 @export var help_screen: Control
 @export var history_screen: Control
+@export var favorites_screen: Control
 @export var batch_screen: Control
 @export var options_screen: Control
 
@@ -50,6 +51,7 @@ func swap_app_screen(target: Control = null):
     help_screen.hide()
     
     history_screen.hide()
+    favorites_screen.hide()
     batch_screen.hide()
     options_screen.hide()
     
