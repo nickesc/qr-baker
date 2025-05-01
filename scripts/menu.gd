@@ -60,7 +60,8 @@ func swap_app_screen(target: Control = null):
     if target == qr_generator:
         more.icon = load("res://imgs/dots-vertical.svg")
     else:
-        more.icon = load("res://imgs/home.svg")
+        more.icon = load("res://imgs/qrcode.svg")
+        #more.icon = load("res://imgs/home.svg")
     
     if target:
         target.show()
@@ -84,10 +85,10 @@ func _on_help_pressed() -> void:
     OS.shell_open("https://github.com/nickesc/qr-baker/blob/main/README.md")
 
 func _on_more_pressed():
-    if not more_screen.visible:
-        swap_app_screen(more_screen)
-    else:
+    if not qr_generator.visible:
         swap_app_screen(qr_generator)
+    else:
+        swap_app_screen(more_screen)
     
 
 func _on_move_down() -> void:
