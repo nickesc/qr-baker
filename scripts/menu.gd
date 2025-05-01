@@ -9,6 +9,7 @@ var moving: bool = false
 @onready var header: Button = $Header
 @onready var web_header: Button = $WebHeader
 @onready var separator2: Control = $Separator2
+@onready var more: Button = $More
 @onready var help: Button = $Help
 
 @export_category("Components")
@@ -30,6 +31,7 @@ var moving: bool = false
 func _ready() -> void:
     match OS.get_name():
         "Android", "iOS":
+            more.reparent(highest_content)
             help.reparent(highest_content)
             set_visible(false)
         "Web":
