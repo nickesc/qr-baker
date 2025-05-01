@@ -4,7 +4,7 @@ const QRCode = preload("res://addons/qr_code/qr_code.gd")
 
 signal qr_saved(exit_code: int)
 
-@export var qr: QRCodeRect
+var qr: QRCodeRect
 
 # Image Saver Definitions
 
@@ -39,7 +39,7 @@ func set_qr(curr_qr: QRCodeRect) -> QRCodeRect:
     qr = curr_qr
     return curr_qr
 
-func _on_save_qr(target_qr: QRCodeRect) -> void:
+func save_to_device(target_qr: QRCodeRect, history: bool = true):
     set_qr(target_qr)
     
     match OS.get_name():
@@ -51,6 +51,13 @@ func _on_save_qr(target_qr: QRCodeRect) -> void:
             web_download()
         _:
             save_with_file_dialog()
+
+func _on_save_entry(target_qr: QRCodeRect) -> void:
+    save_to_device(target_qr)
+
+func _on_save_qr(target_qr: QRCodeRect) -> void:
+    save_to_device(target_qr)
+    print(target_qr.get_qr_options())
 
 func save_with_file_dialog():
     save_dialog.start_save()
