@@ -72,7 +72,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_o5qli")
 
-[node name="App Panel" type="PanelContainer" parent="." node_paths=PackedStringArray("buttons", "save_buttons", "spinboxes", "text_edits", "labels", "icon_buttons")]
+[node name="App Panel" type="PanelContainer" parent="." node_paths=PackedStringArray("margin_container", "buttons", "save_buttons", "spinboxes", "text_edits", "labels", "icon_buttons")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,7 +82,8 @@ grow_vertical = 2
 theme = ExtResource("1_o5qli")
 theme_override_styles/panel = ExtResource("2_eb6dy")
 script = ExtResource("2_ya4ey")
-buttons = [NodePath("VBoxContainer/MarginContainer/QR Generator/Properties/Options/ErrorCorrection"), NodePath("VBoxContainer/MarginContainer/QR Generator/Properties/Options/LightModuleColor"), NodePath("VBoxContainer/MarginContainer/QR Generator/Properties/Options/DarkModuleColor"), NodePath("VBoxContainer/MarginContainer/QR Generator/Submit/Generate")]
+margin_container = NodePath("VBoxContainer/MarginContainer")
+buttons = [NodePath("VBoxContainer/MarginContainer/QR Generator/Properties/Options/ErrorCorrection"), NodePath("VBoxContainer/MarginContainer/QR Generator/Properties/Options/LightModuleColor"), NodePath("VBoxContainer/MarginContainer/QR Generator/Properties/Options/DarkModuleColor"), NodePath("VBoxContainer/MarginContainer/QR Generator/Submit/Generate"), NodePath("VBoxContainer/MarginContainer/More Screen/History"), NodePath("VBoxContainer/MarginContainer/More Screen/Help"), NodePath("VBoxContainer/MarginContainer/More Screen/Back"), NodePath("VBoxContainer/MarginContainer/History Screen/HBoxContainer/Clear"), NodePath("VBoxContainer/MarginContainer/History Screen/Back"), NodePath("VBoxContainer/MarginContainer/Help Screen/Back")]
 save_buttons = [NodePath("VBoxContainer/MarginContainer/QR Generator/SaveToDevice")]
 spinboxes = [NodePath("VBoxContainer/MarginContainer/QR Generator/Properties/Options/ModulePxSize"), NodePath("VBoxContainer/MarginContainer/QR Generator/Properties/Options/QuietZoneSize")]
 text_edits = [NodePath("VBoxContainer/MarginContainer/QR Generator/Properties/DataContainer/Data")]

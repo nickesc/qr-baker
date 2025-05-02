@@ -5,7 +5,9 @@ var mobile_style_box: StyleBox = preload("res://themes/mobile_stylebox.tres")
 
 var ui_theme: Theme = preload("res://themes/ui_theme.tres")
 
-@export_category("Button Scale")
+@export_category("Scale")
+
+@export var max_web_width: int = 1600
 
 @export var button_scale: float = 2
 @export var spinbox_scale: float = 2
@@ -17,6 +19,8 @@ var ui_theme: Theme = preload("res://themes/ui_theme.tres")
 
 @export_group("Components")
 
+@export var margin_container: MarginContainer
+
 @export var buttons: Array[Button]
 @export var save_buttons: Array[Button]
 @export var spinboxes: Array[SpinBox]
@@ -24,16 +28,29 @@ var ui_theme: Theme = preload("res://themes/ui_theme.tres")
 @export var labels: Array[Label]
 @export var icon_buttons: Array[Button]
 
+var monitor_web_width: bool = false
+var last_web_width: int
 
 func _ready() -> void:
     match OS.get_name():
         "Android", "iOS":
             add_theme_stylebox_override("panel", mobile_style_box)
             update_theme_for_mobile()
+        "Web":
+            #margin_container.add_theme_constant_override("margin_left", 500)
+            #margin_container.add_theme_constant_override("margin_right", 500)
+            monitor_web_width = true
         _:
             add_theme_stylebox_override("panel", panel_style_box)
             
-            
+func _process(_delta: float) -> void:
+    if monitor_web_width:
+        var width = DisplayServer.window_get_size().x
+        if width!=last_web_width and width > max_web_width:
+            #print(width, last_web_width)
+            margin_container.add_theme_constant_override("margin_left", (width-max_web_width)/2.0)
+            margin_container.add_theme_constant_override("margin_right", (width-max_web_width)/2.0)
+        last_web_width = width
 
 func scale_minimum_size(node: Control, scale_x: float, scale_y: float):
     var new_button_size: Vector2 = node.get_custom_minimum_size() * Vector2(scale_x, scale_y)
