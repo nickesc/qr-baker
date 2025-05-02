@@ -21,7 +21,7 @@ func _on_close_dialog():
     set_latest_to_file()
     print("Close: ", "[" + latest_filename + ", " + latest_dir + "]")
 
-func _on_save_pressed():
+func start_save():
     set_file_to_latest()
     set_visible(true)
     print("Open: ", "[" + latest_filename + ", " + latest_dir + "]")
